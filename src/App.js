@@ -231,6 +231,7 @@ function App() {
             <div className="col-md-4">
               <Post
                 key={post.id}
+                user={user}
                 postId={post.id}
                 caption={post.caption}
                 username={post.username}

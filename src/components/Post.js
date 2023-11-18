@@ -7,7 +7,7 @@ import { collection, onSnapshot,addDoc } from "firebase/firestore";
 
 
 export default function Post(props) {
-  const {postId, caption, username, avatarUrl, imgUrl } = props;
+  const {user,postId, caption, username, avatarUrl, imgUrl } = props;
   const [comment, setComment] = useState("");
   const [comments, setComments] = useState([]);
   const myCollection = collection(db, "posts");
@@ -79,12 +79,14 @@ export default function Post(props) {
         </div>
       </div>
       <div className="card-footer" >
+        { user &&
         <form onSubmit={postcomment} style={{display:"flex",justifyContent:"space-between"}} >
         <input type="text" placeholder="Comment" style={{width:"60%",paddingLeft:"4px"}} value={comment} onChange={(e)=>setComment(e.target.value)} required/>
         <button type="submit" style={{width:"30%",padding:"2px",borderRadius:"5px",}}>
           Post
         </button>
         </form>
+}
       </div>
     </div>
   );
